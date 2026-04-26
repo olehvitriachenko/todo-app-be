@@ -1,6 +1,7 @@
 import { join } from 'node:path'
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
 import { FastifyPluginAsync, FastifyServerOptions } from 'fastify'
+import cors from "@fastify/cors";
 
 export interface AppOptions extends FastifyServerOptions, Partial<AutoloadPluginOptions> {
 
@@ -13,7 +14,21 @@ const app: FastifyPluginAsync<AppOptions> = async (
   fastify,
   opts
 ): Promise<void> => {
-  // Place here your custom code!
+  // fastify.addHook("onRequest", async (request, reply) => {
+  //   reply.header("Access-Control-Allow-Origin", "*");
+  //   reply.header("Access-Control-Allow-Methods", "GET,POST,PATCH,DELETE,OPTIONS");
+  //   reply.header("Access-Control-Allow-Headers", "Content-Type");
+
+  //   if (request.method === "OPTIONS") {
+  //     return reply.code(204).send();
+  //   }
+  // });
+
+  await fastify.register(cors, {
+    origin: '*',
+    methods: ['GET', "POST", 'PATCH', "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type"]
+  })
 
   // Do not touch the following lines
 

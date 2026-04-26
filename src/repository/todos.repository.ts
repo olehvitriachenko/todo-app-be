@@ -27,7 +27,7 @@ export const createTodoItem = (data: CreateTodoRequest): Todo => {
         INSERT INTO todos (id, text, status)
         VALUES (?, ?, ?)
         `,
-  ).run(id, data.text, data.status ?? "Created");
+  ).run(id, data.text, data.status ?? "created");
 
   const todo = getTodoItem(id);
 

@@ -1,4 +1,4 @@
-export type TodoStatus = "Created" | "InProgress" | "Done";
+export type TodoStatus = "created" | "in_progress" | "done";
 
 export type Todo = {
   id: string;

@@ -9,7 +9,7 @@ import {
 import { TodoStatus } from "@/types/todos";
 import { FastifyPluginAsync } from "fastify";
 
-const STATUS_ENUM = ["Created", "InProgress", "Done"];
+const STATUS_ENUM: TodoStatus[] = ["created", "in_progress", "done"];
 
 const todoRoute: FastifyPluginAsync = async (fastify) => {
   // TODO: POST todo item
